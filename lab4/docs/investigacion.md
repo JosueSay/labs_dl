@@ -121,21 +121,19 @@ Las ventanas temporales son subsecuencias consecutivas extraídas de la serie pa
 
 En PyTorch, al activar `bidirectional=True`, la RNN procesa la secuencia en dos direcciones: de inicio a fin y de fin a inicio. Esto produce dos vectores ocultos por cada paso temporal, que se concatenan en la salida. En el caso del dataset de manchas solares, la bidireccionalidad ofrece una ventaja al permitir que el modelo incorpore simultáneamente información del pasado y del futuro en el análisis de cada punto de la serie, lo cual puede enriquecer la representación de patrones cíclicos.
 
+> **Nota:** No aplica ya que por no existe inferencia, no añade más información del contenido del pasado de la info.
+
 ### Dropout
 
 El parámetro `dropout` introduce aleatoriamente la desactivación de conexiones entre capas durante el entrenamiento. Su función es reducir el sobreajuste, obligando a la red a no depender en exceso de conexiones específicas. En modelos con múltiples capas recurrentes o con ventanas largas, el dropout es fundamental para mejorar la capacidad de generalización, evitando que el modelo memorice el ruido propio de los datos.
 
-### Comparación con arquitecturas alternativas
+> **Nota:** No aplica ya que por defecto tenemos 1 capa para RNN.
 
-Aunque la RNN simple es suficiente para capturar dependencias cortas, modelos como **LSTM** (Long Short-Term Memory) y **GRU** (Gated Recurrent Unit) están diseñados para manejar dependencias más largas y mitigar problemas como el *vanishing gradient*.
-
-- **RNN**: más ligera y rápida, adecuada para dependencias cortas.
-- **LSTM**: incorpora compuertas de entrada, olvido y salida que gestionan de forma más estable la memoria en secuencias largas.
-- **GRU**: más compacta que la LSTM, combina compuertas de actualización y reinicio, equilibrando rendimiento y eficiencia.
-
-### Packed Sequences
+### Packed Sequences (no aplica)
 
 Cuando las secuencias de entrada tienen longitudes variables (por ejemplo, ventanas de distinta duración debido a la limpieza de datos faltantes), PyTorch ofrece utilidades como `pack_padded_sequence` y `pack_sequence`. Estas funciones permiten procesar de manera eficiente las secuencias sin necesidad de rellenarlas artificialmente hasta una longitud común, optimizando la memoria y el cálculo.
+
+> **Nota:** No aplica ya que se usa una ventana de longitud fija.
 
 ## Referencias
 
